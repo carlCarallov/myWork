@@ -30,6 +30,63 @@ ul {
     padding: 0;
     list-style: none;
 }
+.preloader {
+	position: fixed;
+    background: black;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+    transition: all 1s;
+    opacity: 1;
+    visibility: visible;
+}
+.loader {
+    position: absolute;
+    width: 75px;
+    height: 75px;
+    border:10px solid white;
+    border-radius: 50%;
+    border-top-color: darkblue;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    animation: 1s spin infinite linear;
+    z-index: 6;
+  } 
+.circleOut {
+    position: absolute;
+    width: 105px;
+    height: 105px;
+    border: 6px solid white;
+    border-radius: 50%;
+    border-top-color: blue;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    animation: 1s spinOut infinite linear;
+    z-index: 5;
+}
+.done {
+    opacity: 0;
+    visibility: hidden;
+}
+@keyframes spin {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }to{
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+@keyframes spinOut {
+    from {
+        transform: translate(-50%,-50%) rotate(0deg);
+    }to {
+        transform: translate(-50%, -50%) rotate(-360deg);
+    }
+}
+
 
 div {
     padding: 0;
@@ -111,6 +168,7 @@ div {
 }
 
 #navMenu p {
+    
     width: 30px;
     height: 15px;
 }
@@ -186,22 +244,28 @@ div {
     -moz-transition: all ease-in-out .4s;
     -o-transition: all ease-in-out .4s;
 }
-.menu ul li p {
+.menu ul li button {
     font: 600 28px Myriad_pro;
     width: 180px;
     margin-left: 45%;
+    background: none;
+    border: none;
+    color: whitesmoke;
 }
 .menu ul li:hover {
     background: rgba(225, 225, 225, .3);
     color: black;
 }
-.menu ul li p.page_myStory {
+.menu ul li button:hover {
+    color: black;
+}
+.menu ul li button.page_myStory {
     margin-left: 45.8%;
 }
-.menu ul li p.page_portfolio {
+.menu ul li button.page_portfolio {
     margin-left: 43.5%;
 }
-.menu ul li p.page_contacts {
+.menu ul li button.page_contacts {
     margin-left: 44.4%;
 }
 
@@ -371,7 +435,7 @@ div {
     padding: 10px;
 }
 .imgWin {
-    position: static;
+    position: relative;
     z-index: 1;
     transition: all ease-in-out .5s;
     -moz-transition: all ease-in-out .5s;
@@ -384,57 +448,95 @@ div {
     overflow: hidden;
     margin-left: 40px;
 }
+.dropWin:before, .dropWin:after {
+	content: '';
+    width: 500px;
+    height:500px;
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    top: 0;
+    background: black;
+    opacity: 1;
+    transition: 1s;
+}
+.dropWin:before {
+	transform: translate(-135%, -55%) rotate(45deg);
+}
+.dropWin:after {
+	transform: translate(155%, -55%) rotate(45deg);
+}
 .imgWin:hover {
+    
     transition: all ease .6s;
     box-shadow: 0 0 5px 2px white;
     -moz-box-shadow: 0 0 5px 2px white;
     -webkit-box-shadow: 0 0 5px 2px white;
     -o-box-shadow: 0 0 5px 2px white;
 }
+.imgWin:hover img {
+	filter: blur(2px);
+}
+
 .imgWin:hover .dropWin {
-    margin-top: -79%;
-    display: block;
+    opacity: 1;
+}
+.imgWin:hover .dropWin::before {
+	transform: translate(22%, -23%) rotate(45deg);
+    transition: 1s;
+    opacity: .6;
+    border: 5px solid red;
+}
+.imgWin:hover .dropWin::after {
+	transform: translate(-43%, -23%) rotate(45deg);
+    transition: 1s;
+    opacity: .6;
+    border: 5px solid orange;
 }
 .dropWin {
-    position: relative;
+    position: absolute;
     z-index: 2;
-    background: rgba(0, 0, 0, .6);
-    margin-top: -154%;
+    margin-top: -79%;
     width: 400px;
     height: 257px;
     padding: 10px;
-    display: none;
-    transition: all ease-in-out .5s;
+    opacity: 0;
+    transition: all  .5s;
     -webkit-transition: all ease-in-out .5s;
     -moz-transition: all ease-in-out .5s;
     -o-transition: all ease-in-out .5s;
 }
 .dropWin p {
+    
     color: orange;
     font: 600 16px Mvideo_light;
 }
 .dropWin p.nameWork {
     width: 150px;
     margin-left: 40%;
+    margin-top: 10%;
     font-size: 18px;
 }
 .dropWin button {
-    position: relative;
+    position: absolute;
     display: block;
-    top: 23%;
+    top: 36%;
     left: 32%;
     background: none;
     border: 5px solid white;
     color: white;
     font: 500 20px Myriad_pro;
     padding: 10px;
+    z-index: 3;
 }
+
+
 .dropWin button:hover {
     background: rgba(225, 225, 225, .4);
 }
 .dropWin p.titleWorkMin {
-    position: relative;
-    top: 40%;
+    position: absolute;
+    bottom: 15%;
 }
 
 
@@ -512,7 +614,7 @@ div {
     -moz-box-shadow: 0 1px 20px 2px black;
     -o-box-shadow: 0 1px 20px 2px black;
     background: #cecece;
-    height: 950px;
+   
 }
 
 
@@ -637,6 +739,9 @@ textarea {
     width: 40%;
     left: 38%;
 }
+.form form div {
+    float: right;
+}
 .form form p, label {
 	font: 500 18px Mvideo_light;
 }
@@ -699,4 +804,28 @@ footer p {
     left: 10%;
     color: white;
     font: 400 16px Myriad_pro;
+}
+#fullShow {
+    
+    position: fixed;
+    left: 4px;
+    top: 1px;
+    background: rgba(0, 0, 0, .8);
+    width: 1340px;
+    height: 768px;
+    display: none;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -o-border-radius: 10px;
+    z-index: 3;
+}
+.closeF {
+	position: fixed;
+    background: black;
+    border: 1px solid white;
+    right: 10%;
+    top: 15%;
+    width: 59px;
+    height: 60px;
+    font: 600 45px Myriad_pro;
 }

@@ -1,5 +1,16 @@
+
+document.body.onload = function(){
+    setTimeout(function(){
+        var preloader = document.getElementById('pagePreloader');
+        if(!preloader.classList.contains('done')){
+            preloader.classList.add('done');
+        }
+    }, 1000);
+}
+new WOW().init();
 $('document').ready(function () {
     showTable('all');
+
 
 });
 
@@ -7,135 +18,97 @@ $('document').ready(function () {
 var timer;
 var i = 0;
 
-var bt = document.getElementById('navMenu');
-bt.onclick = function () {
-    var menu = document.getElementById('w_menu');
-    if (i == 0) {
-       this.innerHTML = '<div><p class="a4">&times;</p></div>';
-        menu.style.zIndex = '2';
-        menu.style.display = 'block';
+$('#navMenu').on('click', function(){
+    
+    if(i == 0){
+        $(this).html('<div><p class="a4">&times;</p></div>');
+        $('#w_menu').show(1000);
+        $('#w_menu').css('z-index', '2');
         i++;
-    } else {
-        this.innerHTML = '<div><p id="a1">&mdash;</p><p id="a2">&mdash;</p><p id="a3">&mdash;</p></div>';
-        menu.style.display = 'none';
+    }else if(i == 1){
+       $(this).html('<div><p id="a1">&mdash;</p><p id="a2">&mdash;</p><p id="a3">&mdash;</p></div>');
+        $('#w_menu').hide(1000);
         i = 0;
     }
+});
 
-
+function slowScroll(id){
+    var pix = 20;
+    $('html,body').animate({
+        scrollTop:$(id).offset().top + pix,
+    },700);
+    i = 0;
+    $('#w_menu').hide(1000);
+    $('#navMenu').html('<div><p id="a1">&mdash;</p><p id="a2">&mdash;</p><p id="a3">&mdash;</p></div>');
+    return false;
 }
 
- document.getElementById('w_menu').onclick = function (event) {
-    
-    if (event.target.className == 'page_prew') {
-        var pixY = window.pageYOffset;
-        var stopY = 0;
-        if (pixY > stopY) {
-            scrollToUp(stopY, pixY);
-        } else {
-            scrollToDown(stopY, pixY);
-        }
-    } else if (event.target.className == 'page_myStory') {
-         var pixY = window.pageYOffset;
-        var stopY = 828;
-        if (pixY > stopY) {
-            scrollToUp(stopY, pixY);
-        } else {
-            scrollToDown(stopY, pixY);
-        }
-    } else if (event.target.className == 'page_portfolio') {
-         var pixY = window.pageYOffset;
-        var stopY = 1530;
-        //1530, 2530, 3295
-        if (pixY > stopY) {
-            scrollToUp(stopY, pixY);
-        } else {
-            scrollToDown(stopY, pixY);
-        }
-    } else if (event.target.className == 'page_resume') {
-         var pixY = window.pageYOffset;
-        var stopY = 2530;
-        if (pixY > stopY) {
-            scrollToUp(stopY, pixY);
-        } else {
-            scrollToDown(stopY, pixY);
-        }
-    } else if (event.target.className == 'page_contacts') {
-         var pixY = window.pageYOffset;
-        var stopY = 3295;
-        if (pixY > stopY) {
-            scrollToUp(stopY, pixY);
-        } else {
-            scrollToDown(stopY, pixY);
-        }
-    }
-}
-
-
-
-
-function scrollToUp(stopUp, pix) {
-    if (pix > stopUp) {
-        window.scrollTo(0, pix);
-        pix -= 100;
-        timer = setTimeout(scrollToUp, 100);
-    } else {
-        clearTimeout(timer);
-        window.scrollTo(0, stopUp);
-    }
-}
-
-function scrollToDown(stopDown, pix) {
-    if (pix > stopDown) {
-        window.scrollTo(0, pix);
-        pix += 100;
-        timer = setTimeout(scrollToDown, 100);
-    } else {
-        clearTimeout(timer);
-        window.scrollTo(0, stopDown);
-    }
-}
-//$('.nav').on('click', function(event){
-//    var indef = event.target.className;
-//    showTable(indef);
-//});
 document.getElementById('nav').onclick = function (event) {
-    showTable(event.target.className);
+    var indef1 = event.target.className;
+    showTable(indef1);
 }
-
 
 function showTable(indef) {
     $.getJSON('table.json', function (data) {
+        var dropName ='';
         var out = '';
         if (indef == 'all') {
-            for (var i in data) {
-                out += '<div class="imgWin"><img  src="' + data[i].imgMin + '" class="imgWork">';
-                out += '<div class="dropWin"> <p class="nameWork">' + data[i].name + '</p>';
-                out += '<button id="present">Посмотреть</button>';
-                out += '<p class="titleWorkMin">' + data[i].title_min + '</p></div>';
+            for (var key in data) {
+                dropName = data[key].name;
+                out += '<div class="imgWin"><img  src="' + data[key].imgMin + '" class="imgWork">';
+                out += '<div class="dropWin"> <p class="nameWork">' + data[key].name + '</p>';
+                out += '<button class="'+dropName+'" id="present">Посмотреть</button>';
+                out += '</div>';
                 out += '</div>';
 
             }
         } else {
 
-            for (var i in data) {
-                if (data[i]['type'] == indef) {
-                    out += '<div class="imgWin"><img  src="' + data[i].imgMin + '" class="imgWork">';
-                    out += '<div class="dropWin"> <p class="nameWork">' + data[i].name + '</p>';
-                    out += '<button class="'+data[i].name+'" id="present">Посмотреть</button>';
-                    out += '<p class="titleWorkMin">' + data[i].title_min + '</p></div>';
+            for (var key in data) {
+                if (data[key].type == indef) {
+                     dropName = data[key].name;
+                    out += '<div class="imgWin"><img  src="' + data[key].imgMin + '" class="imgWork">';
+                    out += '<div class="dropWin"> <p class="nameWork">' + dropName + '</p>';
+                    out += '<button class="' +dropName+ '" id="present">Посмотреть</button>';
+                    out += '</div>';
                     out += '</div>';
                 }
             }
 
 
         }
-
+        
         $('#portfolioTabl').html(out);
-//        $('button#present').on('click', fullShow);
+//        $('.imgWin').hover(imgEnter,imgLeave);
+        $('#present').on('click',function(event){
+            $('#navMenu').hide();
+            $('.closeF').show();
+            $('#fullShow').show(1000);
+            var outF = '', key1 = '';
+            var btName = $(event.target).className;
+            for (key1 in data){
+                if(data[key1].name == btName){
+                outF += '<img src="'+data[key1].img+'">';
+                outF += '<p>'+data[key1].title+'</p>';
+                }
+                key1 = '';
+            }
+            $('#fullShow').html(outF);
+        });
     });
 }
 
-//function fullShow(event){
-//var tragetObj = document.getElementsByClassName('dropWin');
-//    if(event.target.)
+
+
+//function imgEnter(){
+//   $(this).children('.dropWin').show(1000);
 //}
+//function imgLeave(){
+//    $(this).children('.dropWin').hide(500);
+//}
+$('.closeF').on('click', function(){
+    $('#fullShow').hide(1000);
+    $('#navMenu').show();
+    $(this).hide();
+});
+

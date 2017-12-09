@@ -1,46 +1,57 @@
 <!doctype html>
 
 <html>
-	<head>
+
+<head>
     <title>my work</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <link rel="stylesheet" href="css/style-icon-fonts.css" type="text/css">
-    <script src="js/jquery.lib.js" defer></script>
+    <link rel="stylesheet" href="css/animate.css" type="text/css">
+    <script src="js/jquery-3.2.1.min.js" defer></script>
+    <script src="js/wow.min.js" defer></script>
 
 </head>
 
 <body>
+   <div id="pagePreloader" class="preloader">
+       <div class="loader"></div>
+       <div class="circleOut"></div>
+   </div>
     <div class="menu" id="w_menu">
         <ul>
             <li>
-                <p class="page_prew">Главная</p>
+                <button id="page_prew" onclick="slowScroll('#prew')">Главная</button>
+
             </li>
             <li>
-                <p class="page_myStory">О себе</p>
+                <button id="page_myStory" onclick="slowScroll('#myStory')">О себе</button>
+
             </li>
             <li>
-                <p class="page_portfolio">Портфолио</p>
+                <button id="page_portfolio" onclick="slowScroll('#portfolio')">Портфолио</button>
+
             </li>
             <li>
-                <p class="page_resume">Резюме</p>
+                <button id="page_resume" onclick="slowScroll('#resume')">Резюме</button>
+
             </li>
             <li>
-                <p class="page_contacts"> Контакты</p>
+                <button id="page_contacts" onclick="slowScroll('#contacts')">Контакты</button>
             </li>
         </ul>
     </div>
     <button id="navMenu"><div><p id="a1">&mdash;</p><p id="a2">&mdash;</p><p id="a3">&mdash;</p></div></button>
     <div class="container" id="prew">
 
-        <div class="preview">
+        <div class="preview ">
 
-            <p class="prew1">Сайт-портфолио веб-разработчика</p>
+            <p class="prew1 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="2s">Сайт-портфолио веб-разработчика</p>
 
 
-            <p class="prew2">ПАВЛОВ ВЛАДИМИР</p>
-            <div class="txt">
+            <p class="prew2 wow fadeInRight" data-wow-duration="1s" data-wow-delay="2s">ПАВЛОВ ВЛАДИМИР</p>
+            <div class="txt wow fadeInLeft" data-wow-duration="1s" data-wow-delay="2s">
                 <p class="p1">WEB - РАЗРАБОТЧИК / HTML - ВЕРСТАЛЬЩИК</p>
                 <p class="p2">СПЕЦИАЛИСТ CMS JOOMLA / JOOMSHOPPING</p>
                 <p class="p3">ПРОГРАММИСТ PHP / JAVASCRIPT</p>
@@ -56,15 +67,15 @@
                 <p>О себе</p>
             </div>
             <div class="persInformation">
-                <div class="storyBlock">
+                <div class="storyBlock wow fadeInLeft" data-wow-duration="1s" data-wow-offset="70">
                     <p>Немного о себе</p>
                     <p>Доброго времени суток. Меня зовут Владимир, я занимаюсь разработкой сайтов, веб-приложений с нуля, "под ключ". Специалист по CMS Joomla, Joomshopping. Выполняю верстку и программирование сайтов при этом используя только современные технологии и стандарты разработки HTML5, CSS3, чистый JS и Jquery. Так же делаю полностью адаптивную верстку для различных устройств. Все начатые ранее проекты довожу до конца.</p>
                 </div>
                 <div class="photo">
                     <p>Фото</p>
-                    <img src="img/my_photo.png" alt="">
+                    <img class="wow flipInY" data-wow-duration="1s" data-wow-offset="70" src="img/my_photo.png" alt="">
                 </div>
-                <div class="inf">
+                <div class="inf wow fadeInRight" data-wow-duration="1s" data-wow-offset="70">
                     <p class="title1">Персональная информация</p>
                     <p class="inf1">Профессиональное создание сайтов: разработка дизайна, HTML верстка, посадка на CMS Joomla, программирование на PHP, JavaScript</p>
                     <p class="inf2">День рождения: 21 апреля 1996 года</p>
@@ -84,26 +95,28 @@
         <p class="p5">Мои последние работы (с 2016 г. по 2017 г.) </p>
         <div class="navWorks">
             <ul id="nav">
-                <li><button class="all">Все работы</button></li>
-                <li><button class="page-proofs">Верстка</button></li>
+                <li><button  class="all">Все работы</button></li>
+                <li><button  class="page-proofs">Верстка</button></li>
                 <li><button class="fullStack">"Под ключ"</button></li>
                 <li><button class="design">Дизайн</button></li>
                 <li><button class="other">Разное</button></li>
             </ul>
         </div>
-
-        <div id="portfolioTabl">
+<div id="fullShow">
+    <button class="closeF">&times;</button>
+</div>
+        <div id="portfolioTabl" class="wow fadeInUp" data-wow-duration="1s" data-wow-offset="100">
 
         </div>
     </div>
     <div id="resume" class="container">
         <p class="r1">Резюме</p>
         <div class="resumeContent">
-            <div class="leftResume">
+            <div class="leftResume wow slideInLeft" data-wow-offset="50" data-wow-duration="1s">
                 <p>Образование</p>
                 <p>Таким образом реализация намеченных плановых заданий представляет собой интересный эксперимент проверки позиций, занимаемых участниками в отношении поставленных задач. Равным образом новая модель организационной деятельности в значительной степени обуславливает создание </p>
             </div>
-            <div class="rightResume">
+            <div class="rightResume wow slideInRight" data-wow-offset="50" data-wow-duration="1s">
                 <p>Умения и навыки</p>
                 <p>Таким образом реализация намеченных плановых заданий представляет собой интересный эксперимент проверки позиций, занимаемых участниками в отношении поставленных задач. Равным образом новая модель организационной деятельности в </p>
             </div>
@@ -116,8 +129,8 @@
 
         <div class="social">
             <table>
-                <tr>
-                    <td class="vk">
+                <tr class="wow bounceInDown" data-wow-duration="2s" data-wow-offset="60">
+                    <td class="vk" >
                         <p>
                             <span class="icon-vk"></span> <br>
                             <br>Вконтакте: <br> vk.com/hrielnrm
@@ -130,14 +143,14 @@
                         </p>
                     </td>
 
-                    <td class="eMail">
+                    <td class="eMail ">
                         <p>
                             <span class="icon-envelop"></span> <br>
                             <br>E-mail: <br> chet.solomon,key@yandex.ru
                         </p>
                     </td>
                 </tr>
-                <tr>
+                <tr class="wow bounceInUp" data-wow-offset="60" data-wow-duration="2s">
                     <td class="facebook">
                         <p>
                             <span class="icon-facebook"></span> <br>
@@ -161,23 +174,7 @@
                 </tr>
             </table>
         </div>
-        <div class="form">
-            <form action="">
-
-                <input class="f1" type="text" pattern="[А-Яа-яЁё]{,12}" placeholder="Ваше имя"><br>
-                <input class="f2" type="text" placeholder="Ваш e-mail">
-                <p class="f3">Есть ли у вас техническое задание?</p> 
-                <label class="labsWork" for="yes">Да:</label>
-                 <input id="radio1" type="radio" name="work" value="yes" /> 
-                 <label class="labsWork" for="no">Нет:</label> 
-                 <input id="radio1" type="radio" name="work" value="no" /> <br>
-                <label class="labsWork1" for="need">Срочно?</label> &nbsp;
-                <input type="radio" value="need" /> <br>
-                <textarea placeholder="Сообщение" name="" id="" cols="40" rows="8"></textarea>
-                <br>
-                <button id="send">Отправить</button>
-            </form>
-        </div>
+       
 
 
     </div>
@@ -186,4 +183,5 @@
     </footer>
     <script src="js/main.js" defer></script>
 </body>
+
 </html>
