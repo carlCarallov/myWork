@@ -39,6 +39,10 @@ ul {
     height: 100%;
     z-index: 4;
     transition: all 1s;
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    -o-transition: all 1s;
+    -transition: all 1s;
     opacity: 1;
     visibility: visible;
 }
@@ -52,7 +56,13 @@ ul {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
     animation: 1s spin infinite linear;
+    -webkit-animation: 1s spin infinite linear;
+    -moz-animation: 1s spin infinite linear;
+    -animation: 1s spin infinite linear;
     z-index: 6;
   } 
 .circleOut {
@@ -64,8 +74,14 @@ ul {
     border-top-color: blue;
     left: 50%;
     top: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
     animation: 1s spinOut infinite linear;
+    -webkit-animation: 1s spinOut infinite linear;
+    -moz-animation: 1s spinOut infinite linear;
+    -animation: 1s spinOut infinite linear;
     z-index: 5;
 }
 .done {
@@ -75,17 +91,34 @@ ul {
 @keyframes spin {
     from {
         transform: translate(-50%, -50%) rotate(0deg);
+        -webkit-transform: translate(-50%, -50%) rotate(0deg);
+        -moz-transform: translate(-50%, -50%) rotate(0deg);
+        -ms-transform: translate(-50%, -50%) rotate(0deg);
+        
     }to{
         transform: translate(-50%, -50%) rotate(360deg);
+        -webkit-transform: translate(-50%, -50%) rotate(360deg);
+        -moz-transform: translate(-50%, -50%) rotate(360deg);
+        -ms-transform: translate(-50%, -50%) rotate(360deg);
+        
     }
 }
 @keyframes spinOut {
     from {
         transform: translate(-50%,-50%) rotate(0deg);
+        -webkit-transform: translate(-50%,-50%) rotate(0deg);
+        -moz-transform: translate(-50%,-50%) rotate(0deg);
+        -ms-transform: translate(-50%,-50%) rotate(0deg);
+        
     }to {
         transform: translate(-50%, -50%) rotate(-360deg);
+        -webkit-transform: translate(-50%, -50%) rotate(-360deg);
+        -moz-transform: translate(-50%, -50%) rotate(-360deg);
+        -ms-transform: translate(-50%, -50%) rotate(-360deg);
+        
     }
 }
+    
 
 
 div {
@@ -120,7 +153,6 @@ div {
     box-shadow: 0 1px 20px 2px black;
     -webkit-box-shadow: 0 1px 20px 2px black;
     -moz-box-shadow: 0 1px 20px 2px black;
-    -o-box-shadow:0 1px 20px 2px black;
     background: url(../img/prew_bg.jpg)no-repeat;
 }
 .nav {
@@ -168,7 +200,6 @@ div {
 }
 
 #navMenu p {
-    
     width: 30px;
     height: 15px;
 }
@@ -180,7 +211,76 @@ div {
 
 #navMenu .a5 {}
 
-
+.crossInLeft {
+    position: absolute;
+    z-index: 6;
+    animation: crossInLeft 1s 1 ease alternate;
+    
+}
+.crossInRight {
+    position: absolute;
+    z-index: 7;
+    animation: crossInRight 1s 1 ease alternate;
+}
+.crossInCenter {
+    animation: crossInCenter 1s 1 ease alternate;
+}
+.crossOutLeft {
+    position: absolute;
+    z-index: 6;
+    animation: crossOutLeft 1s 1 ease alternate;
+}
+.crossOutRight {
+    position: absolute;
+    z-index: 7;
+    animation: crossOutRight 1s 1 ease alternate;
+}
+.crossOutCenter {
+    animation: crossOutCenter 1s 1 ease alternate;
+}
+@keyframes crossInLeft {
+    from{
+        transform: translate(15%,-5%) rotate(0deg);
+    } to {
+        transform:  translate(34%,-12%) rotate(45deg);
+    }
+    
+}
+@keyframes crossInRight{
+    from{
+        transform: translate(-15%, 45%) rotate(0deg);
+    } to {
+        transform: translate(-41%,92%) rotate(-45deg);
+    }
+}
+@keyframes crossInCenter {
+    from{
+        opacity: 1;
+    }to{
+        opacity: .1;
+    }
+}
+@keyframes crossOutLeft {
+    from {
+        transform: translate(35%,-10%) rotate(45deg);
+    }to {
+        transform: translate(0%,95%) rotate(0deg);
+    }
+}
+@keyframes crossOutRight {
+    from{
+         transform: translate(-40%,91%) rotate(-45deg);
+    }to {
+        transform: translate(0%,85%) rotate(0deg);
+    }
+}
+@keyframes crossOutCenter {
+    from{
+        opacity: 0;
+    }to{
+        opacity: 1;
+    }
+}
 /*------------------------------------------*/
 
 .prew2 {
@@ -205,7 +305,10 @@ div {
     color: white;
 }
 
-.txt>p {margin-top: 10px;}
+.txt>p {
+    text-transform: uppercase;
+    margin-top: 10px;
+}
 
 .p1 {margin-left: 20px;}
 
@@ -222,8 +325,10 @@ div {
     width: 1340px;
     height: 768px;
     display: none;
+    overflow: hidden;
     border-radius: 10px;
     -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
     -o-border-radius: 10px;
     z-index: 3;
 }
@@ -243,6 +348,7 @@ div {
     -webkit-transition: all ease-in-out .4s;
     -moz-transition: all ease-in-out .4s;
     -o-transition: all ease-in-out .4s;
+    -transition: all ease-in-out .4s;
 }
 .menu ul li button {
     font: 600 28px Myriad_pro;
@@ -417,6 +523,7 @@ div {
     -webkit-transition: all ease .3s;
     -moz-transition: all ease .3s;
     -o-transition: all ease .3s;
+    -transition: all ease .3s;
 }
 .navWorks ul li button:hover {
     border-bottom: 1px solid #ff6347;
@@ -441,6 +548,7 @@ div {
     -moz-transition: all ease-in-out .5s;
     -webkit-transition: all ease-in-out .5s;
     -o-transition: all ease-in-out .5s;
+    -transition: all ease-in-out .5s;
     width: 401px;
     height: 257px;
     float: left;
@@ -459,15 +567,26 @@ div {
     background: black;
     opacity: 1;
     transition: 1s;
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    -o-transition: 1s;
+    -transition: 1s;
 }
 .dropWin:before {
 	transform: translate(-135%, -55%) rotate(45deg);
+    -webkit-transform: translate(-135%, -55%) rotate(45deg);
+    -moz-transform: translate(-135%, -55%) rotate(45deg);
+    -ms-transform: translate(-135%, -55%) rotate(45deg);
+    
 }
 .dropWin:after {
 	transform: translate(155%, -55%) rotate(45deg);
+    -webkit-transform: translate(155%, -55%) rotate(45deg);
+    -moz-transform: translate(155%, -55%) rotate(45deg);
+    -ms-transform: translate(155%, -55%) rotate(45deg);
+    
 }
 .imgWin:hover {
-    
     transition: all ease .6s;
     box-shadow: 0 0 5px 2px white;
     -moz-box-shadow: 0 0 5px 2px white;
@@ -476,22 +595,39 @@ div {
 }
 .imgWin:hover img {
 	filter: blur(2px);
+    -webkit-filter: blur(2px);
 }
 
 .imgWin:hover .dropWin {
     opacity: 1;
 }
 .imgWin:hover .dropWin::before {
-	transform: translate(22%, -23%) rotate(45deg);
+	transform: translate(21%, -23%) rotate(45deg);
+    -webkit-transform: translate(21%, -23%) rotate(45deg);
+    -moz-transform: translate(21%, -23%) rotate(45deg);
+    -o-transform: translate(21%, -23%) rotate(45deg);
+    -transform: translate(21%, -23%) rotate(45deg);
     transition: 1s;
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    -o-transition: 1s;
+    -transition: 1s;
     opacity: .6;
-    border: 5px solid red;
+    
 }
 .imgWin:hover .dropWin::after {
-	transform: translate(-43%, -23%) rotate(45deg);
+	transform: translate(-41%, -23%) rotate(45deg);
+    -webkit-transform: translate(-41%, -23%) rotate(45deg);
+    -o-transform: translate(-41%, -23%) rotate(45deg);
+    -moz-transform: translate(-41%, -23%) rotate(45deg);
+    -transform: translate(-41%, -23%) rotate(45deg);
     transition: 1s;
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    -o-transition: 1s;
+    -transition: 1s;
     opacity: .6;
-    border: 5px solid orange;
+   
 }
 .dropWin {
     position: absolute;
@@ -608,11 +744,10 @@ div {
 #contacts {
     border-radius: 1px;
     -webkit-border-radius: 1px;
-    -o-border-radius: 1px;
+    -border-radius: 1px;
     box-shadow: 0 1px 20px 2px black;
     -webkit-box-shadow: 0 1px 20px 2px black;
     -moz-box-shadow: 0 1px 20px 2px black;
-    -o-box-shadow: 0 1px 20px 2px black;
     background: #cecece;
    
 }
@@ -748,16 +883,14 @@ textarea {
 .form form textarea {
 	border-radius: 8px;
     -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    -o-border-radius: 8px;
+    -border-radius: 8px;
     padding: 5px;
     margin-top: 15px;
 }
 .form form button {
     border-radius: 8px;
     -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    -o-border-radius: 8px;
+    -border-radius: 8px;
     width: 100px;
     height: 40px;
     border: 1px solid #ff6347;
@@ -769,8 +902,7 @@ textarea {
 .f1,.f2 {
     border-radius: 8px;
     -webkit-border-radius: 8px;
-    -moz-border-radius:8px;
-    -o-border-radius:8px;
+    -border-radius:8px;
     padding: 5px;
     width: 300px;
 }
@@ -806,7 +938,6 @@ footer p {
     font: 400 16px Myriad_pro;
 }
 #fullShow {
-    
     position: fixed;
     left: 4px;
     top: 1px;
@@ -816,7 +947,7 @@ footer p {
     display: none;
     border-radius: 10px;
     -webkit-border-radius: 10px;
-    -o-border-radius: 10px;
+    -border-radius: 10px;
     z-index: 3;
 }
 .closeF {
