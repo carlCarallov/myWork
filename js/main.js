@@ -214,24 +214,24 @@ function showTable(indef) {
 
         }
 
-        $('#portfolioTabl').html(out);
-        //        $('.imgWin').hover(imgEnter,imgLeave);
-        $('#present').on('click', function (event) {
-            $('#navMenu').hide();
-            $('.closeF').show();
-            $('#fullShow').show(1000);
-            var outF = '',
-                key1 = '';
-            var btName = $(event.target).className;
-            for (key1 in data) {
-                if (data[key1].name == btName) {
-                    outF += '<img src="' + data[key1].img + '">';
-                    outF += '<p>' + data[key1].title + '</p>';
-                }
-                key1 = '';
-            }
-            $('#fullShow').html(outF);
-        });
+//        $('#portfolioTabl').html(out);
+//        //        $('.imgWin').hover(imgEnter,imgLeave);
+//        $('#present').on('click', function (event) {
+//            $('#navMenu').hide();
+//            $('.closeF').show();
+//            $('#fullShow').show(1000);
+//            var outF = '',
+//                key1 = '';
+//            var btName = $(event.target).className;
+//            for (key1 in data) {
+//                if (data[key1].name == btName) {
+//                    outF += '<img src="' + data[key1].img + '">';
+//                    outF += '<p>' + data[key1].title + '</p>';
+//                }
+//                
+//            }
+//            $('#fullShow').html(outF);
+//        });
     });
 }
 
