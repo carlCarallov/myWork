@@ -7,6 +7,7 @@ document.body.onload = function () {
     }, 1000);
 }
 new WOW().init();
+
 $('document').ready(function () {
     showTable('all');
 
@@ -15,7 +16,7 @@ $('document').ready(function () {
 
 
 
-var i = 0;
+
 
 //function navMenuShow() {
 //    var menu_width = 1340;
@@ -111,7 +112,8 @@ function animateCross() {
 //    }
 //
 //}
-(function($){
+var i = 0;
+
     $('#navMenu').on('click', function () {
 
     if (i == 0) {
@@ -126,7 +128,7 @@ function animateCross() {
     }
 });
     
-})(jQuery);
+
 
 var id, timer, elem_offset, y;
 
@@ -136,7 +138,7 @@ function scrollToElem(id) {
     y = window.pageYOffset;
     if (y > elem_offset) {
         slowScrollTop();
-
+    
     } else if (y < elem_offset) {
         slowScrollDown();
     }
@@ -152,7 +154,7 @@ function slowScrollTop() {
     } else {
         clearTimeout(timer);
         window.scrollTo(0, elem_offset);
-        i = 0;
+       
     }
 }
 
@@ -164,7 +166,7 @@ function slowScrollDown() {
     } else {
         clearTimeout(timer);
         window.scrollTo(0, elem_offset);
-        i = 0;
+      
     }
 }
 
@@ -187,9 +189,9 @@ document.getElementById('nav').onclick = function (event) {
 function showTable(indef) {
     $.getJSON('table.json', function (data) {
         var dropName = '';
-        var out = '';
+        var out = '', key = '';
         if (indef == 'all') {
-            for (var key in data) {
+            for ( key in data) {
                 dropName = data[key].name;
                 out += '<div class="imgWin"><img  src="' + data[key].imgMin + '" class="imgWork">';
                 out += '<div class="dropWin"> <p class="nameWork">' + data[key].name + '</p>';
@@ -200,7 +202,7 @@ function showTable(indef) {
             }
         } else {
 
-            for (var key in data) {
+            for ( key in data) {
                 if (data[key].type == indef) {
                     dropName = data[key].name;
                     out += '<div class="imgWin"><img  src="' + data[key].imgMin + '" class="imgWork">';
@@ -214,7 +216,7 @@ function showTable(indef) {
 
         }
 
-//        $('#portfolioTabl').html(out);
+       $('#portfolioTabl').html(out);
 //        //        $('.imgWin').hover(imgEnter,imgLeave);
 //        $('#present').on('click', function (event) {
 //            $('#navMenu').hide();
@@ -243,8 +245,8 @@ function showTable(indef) {
 //function imgLeave(){
 //    $(this).children('.dropWin').hide(500);
 //}
-$('.closeF').on('click', function () {
-    $('#fullShow').hide(1000);
-    $('#navMenu').show();
-    $(this).hide();
-});
+//$('.closeF').on('click', function () {
+//    $('#fullShow').hide(1000);
+//    $('#navMenu').show();
+//    $(this).hide();
+//});
