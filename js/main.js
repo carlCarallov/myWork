@@ -189,9 +189,9 @@ document.getElementById('nav').onclick = function (event) {
 function showTable(indef) {
     $.getJSON('table.json', function (data) {
         var dropName = '';
-        var out = '', key = '';
+        var out = '';
         if (indef == 'all') {
-            for ( key in data) {
+            for (var key in data) {
                 dropName = data[key].name;
                 out += '<div class="imgWin"><img  src="' + data[key].imgMin + '" class="imgWork">';
                 out += '<div class="dropWin"> <p class="nameWork">' + data[key].name + '</p>';
@@ -202,7 +202,7 @@ function showTable(indef) {
             }
         } else {
 
-            for ( key in data) {
+            for (var key in data) {
                 if (data[key].type == indef) {
                     dropName = data[key].name;
                     out += '<div class="imgWin"><img  src="' + data[key].imgMin + '" class="imgWork">';
@@ -213,28 +213,29 @@ function showTable(indef) {
                 }
             }
 
-
+            
         }
-
-       $('#portfolioTabl').html(out);
-//        //        $('.imgWin').hover(imgEnter,imgLeave);
-//        $('#present').on('click', function (event) {
-//            $('#navMenu').hide();
-//            $('.closeF').show();
-//            $('#fullShow').show(1000);
-//            var outF = '',
-//                key1 = '';
-//            var btName = $(event.target).className;
-//            for (key1 in data) {
-//                if (data[key1].name == btName) {
-//                    outF += '<img src="' + data[key1].img + '">';
-//                    outF += '<p>' + data[key1].title + '</p>';
-//                }
-//                
-//            }
-//            $('#fullShow').html(outF);
-//        });
+$('#portfolioTabl').html(out);
+       
+        //        $('.imgWin').hover(imgEnter,imgLeave);
+        $('#present').on('click', function (event) {
+            $('#navMenu').hide();
+            $('.closeF').show();
+            $('#fullShow').show(1000);
+            var outF = '',
+                key1 = '';
+            var btName = $(event.target).className;
+            for (key1 in data) {
+                if (data[key1].name == btName) {
+                    outF += '<img src="' + data[key1].img + '">';
+                    outF += '<p>' + data[key1].title + '</p>';
+                }
+                
+            }
+            $('#fullShow').html(outF);
+        });
     });
+    
 }
 
 
